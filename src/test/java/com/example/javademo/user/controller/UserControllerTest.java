@@ -1,10 +1,12 @@
-package com.example.javademo.lesson;
+package com.example.javademo.user.controller;
 
-import org.junit.jupiter.api.Test;
-
+import com.example.javademo.user.dto.UserCreateRequest;
+import com.example.javademo.user.dto.UserResponse;
+import com.example.javademo.user.service.UserService;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
+import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
@@ -60,6 +62,6 @@ class UserControllerTest {
     void shouldThrowWhenUserNotFound() {
         UserController controller = new UserController(new UserService());
 
-        assertThrows(UserNotFoundException.class, () -> controller.getById(999));
+        assertThrows(com.example.javademo.user.exception.UserNotFoundException.class, () -> controller.getById(999));
     }
 }

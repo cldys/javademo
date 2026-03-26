@@ -1,4 +1,4 @@
-package com.example.javademo.lesson;
+package com.example.javademo.user.domain;
 
 public class User {
 

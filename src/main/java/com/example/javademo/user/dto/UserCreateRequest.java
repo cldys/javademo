@@ -1,4 +1,4 @@
-package com.example.javademo.lesson;
+package com.example.javademo.user.dto;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;

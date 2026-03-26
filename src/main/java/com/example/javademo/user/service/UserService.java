@@ -1,5 +1,9 @@
-package com.example.javademo.lesson;
+package com.example.javademo.user.service;
 
+import com.example.javademo.user.domain.User;
+import com.example.javademo.user.dto.UserCreateRequest;
+import com.example.javademo.user.dto.UserResponse;
+import com.example.javademo.user.exception.UserNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
