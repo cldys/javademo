@@ -2,12 +2,22 @@ package com.example.javademo.lesson;
 
 public class User {
 
+    private final Long id;
     private final String name;
     private int age;
 
     public User(String name, int age) {
+        this(null, name, age);
+    }
+
+    public User(Long id, String name, int age) {
+        this.id = id;
         this.name = name;
         this.age = age;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

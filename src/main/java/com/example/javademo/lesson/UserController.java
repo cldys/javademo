@@ -1,8 +1,13 @@
 package com.example.javademo.lesson;
 
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,13 +20,19 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/introduce")
-    public String introduce(@RequestParam String name, @RequestParam int age) {
-        return userService.introduce(name, age);
+    @PostMapping
+    public ResponseEntity<UserResponse> create(@Valid @RequestBody UserCreateRequest request) {
+        UserResponse response = userService.createUser(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping("/birthday")
-    public String birthday(@RequestParam String name, @RequestParam int age) {
-        return userService.celebrateBirthday(name, age);
+    @GetMapping("/{id}")
+    public UserResponse getById(@PathVariable long id) {
+        return userService.getUser(id);
+    }
+
+    @PostMapping("/{id}/birthday")
+    public UserResponse birthday(@PathVariable long id) {
+        return userService.birthday(id);
     }
 }
